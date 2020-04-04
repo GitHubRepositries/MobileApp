@@ -2,7 +2,7 @@ import React from 'react';
 import Accounts from './Accounts';
 import {withRouter } from 'react-router-dom';
 import {BrowserRouter } from 'react-router-dom';
-
+import Header from '../components/Header.js';
 
 class Home extends React.Component {
 
@@ -21,11 +21,14 @@ handleButtonClick = index => {
 render(){
 
     return(
+       <div className="background">
+        <Header titleText="Accounts Summary" isLoggedIn={true} history={this.props.history} />
         <BrowserRouter>
-            <Accounts 
-            details={this.state.accountDetails} 
+            <Accounts
+            details={this.state.accountDetails}
             clicked={this.handleButtonClick} />
         </BrowserRouter>
+        </div>
     )
 }
 }
