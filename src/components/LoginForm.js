@@ -14,15 +14,12 @@ const useStyles = (theme) => ({
     '& label.Mui-focused': {
       color: '#004d40',
     },
-    '& .MuiInput-underline:after': {
-      borderBottomColor: '#004d40',
-    },
-    '& .MuiOutlinedInput-root': {
-      '& fieldset': {
-        borderColor: '#004d40',
+    '& .MuiInput-root': {
+      '&fieldset': {
+        borderBottomColor: '#004d40',
       },
       '&:hover fieldset': {
-        borderColor: '#004d40',
+        borderBottomColor: '#ff5722',
       },
       '&.Mui-focused fieldset': {
         borderColor: '#ff5722',
@@ -99,40 +96,39 @@ render() {
      const { username, password } = this.state;
   return(
      <div className="loginbackground">
-         <div className="App">
+         <div className="container">
            <ThemeProvider theme={theme}>
            <Header titleText="Fizzy Bank - Login" isLoggedIn={false} />
            <Grid className={classes.root}
               container
               spacing={0}
-              direction="column"
+              direction="row"
               justify="center"
+              align="center"
               alignItems="center"
               style={{ minHeight: '80vh' }}>
               <Grid item xs={3}>
                 <TextField
                 className={classes.margin}
                 label="Username"
-                variant="outlined"
                 InputLabelProps={{
                   classes: {
                     root: classes.inputLabel,
                   }
                 }}
-                id="mui-theme-provider-outlined-input"
                 onChange = {(newValue) => this.setState({username:newValue})} />
                 <TextField
                 className={classes.margin}
                 label="Password"
+                disableUnderline={false}
                 type="password"
-                variant="outlined"
                 InputLabelProps={{
                   classes: {
                     root: classes.inputLabel,
                   }
                 }}
-                id="mui-theme-provider-outlined-input"
                 onChange = {(newValue) => this.setState({password:newValue})} />
+                <br/>
                 <Button variant="contained" color="primary" className={classes.margin1} onClick={(event) => this.handleClick(event)}>
                   Submit
                 </Button>
