@@ -39,7 +39,7 @@ class Otp extends React.Component {
             <p>Account Number : {this.props.match.params.AccountNo}</p>
             <p>Available Balance : £ {this.props.match.params.balance} </p>
             <p>Please enter the amount less than £{this.props.match.params.balance}</p>
-            <input type='number' onChange={event => this.changeHandler(event)} />
+            <input type='number' className='input' onChange={event => this.changeHandler(event)} />
             <br/>
             <br/>
             <button type='submit' onClick={this.otpGen}>Submit</button>
