@@ -23,11 +23,9 @@ render(){
     return(
        <div className="background">
         <Header titleText="Accounts Summary" isLoggedIn={true} history={this.props.history} />
-        <BrowserRouter>
             <Accounts
             details={this.state.accountDetails}
             clicked={this.handleButtonClick} />
-        </BrowserRouter>
         </div>
     )
 }

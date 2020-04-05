@@ -9,13 +9,14 @@ class Otp extends React.Component {
     }
 
      otpGen = () =>{
+       let balance = Number(this.props.match.params.balance);
+       let amount = Number(this.state.enteredAmount);
 
-        if(this.state.enteredAmount <= this.props.match.params.balance && this.state.enteredAmount >0){
+        // alert(amount<=balance);
+        if((amount<=balance) && (amount>0)){
         let otp=Math.floor(Math.random()*900000+100000);
            this.props.history.push('/Otp'+otp);
-       }else if (this.state.enteredAmount > this.props.match.params.balance ){
-         alert(this.state.enteredAmount);
-         alert(this.props.match.params.balance);
+       }else if (amount > balance){
            this.props.history.push('/Error'+this.props.match.params.balance);
        } else {
            let message = 'And more than 0 amount';
@@ -26,7 +27,7 @@ class Otp extends React.Component {
        changeHandler = event => {
         this.setState(
             {
-                enteredAmount:event.target.value
+                enteredAmount: event.target.value
             })
        }
 
