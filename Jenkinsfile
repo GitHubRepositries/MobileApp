@@ -6,7 +6,7 @@ pipeline {
     stages{
         stage('Build Docker image'){
            steps{
-              sh "docker build . -t mrunalini117/react-app:${DOCKER_TAG}"
+              sh " sudo docker build . -t mrunalini117/react-app:${DOCKER_TAG}"
            }
         }
     }
