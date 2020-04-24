@@ -6,7 +6,7 @@ replicaCount: 2
 
 image:
   repository: mrunalini117/sample2
-  tag: latest
+  tag: tagVersion
   pullPolicy: IfNotPresent
 
 imagePullSecrets: []
@@ -36,6 +36,7 @@ securityContext: {}
 service:
   type: NodePort
   port: 80
+  nodePort: 31000
 
 ingress:
   enabled: false
