@@ -9,7 +9,7 @@ pipeline {
               sh "docker build . -t mrunalini117/react-app:${DOCKER_TAG}"
            }
         }
-        stage(Dockerhub push){
+        stage('Dockerhub push'){
           steps{
             withCredentials([string(credentialsId: 'Docker_hub_pwd', variable: 'dockerHubPwd')]) {
                  sh "docker login -u mrunalini117 -p ${dockerHubPwd}"
