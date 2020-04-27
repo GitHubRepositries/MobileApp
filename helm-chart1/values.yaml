@@ -5,7 +5,7 @@
 replicaCount: 2
 
 image:
-  repository: mrunalini117/sample2
+  repository: mrunalini117/react-app
   tag: tagVersion
   pullPolicy: IfNotPresent
 

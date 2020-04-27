@@ -2,6 +2,7 @@ pipeline {
     agent any
     environment{
         DOCKER_TAG = getDockerTag()
+        INSTANCE_IP = getInstanceIp()
     }
     stages{
         stage('Build Docker image'){
@@ -17,10 +18,25 @@ pipeline {
             }
           }
         }
+        stage('Deploy to k8s'){
+           steps{
+                    sh "chmod +x changeTag.sh"
+                    sh "./changeTag DOCKER_TAG"
+                    sh "cp -R helm-chart1/ /home/ec2-user/app"
+                    sh "cd /"
+                    sh "cd home/ec2-user/app"
+                    sh "helm install first-release helm-chart1/"
+           }
+        }
     }
 }
 
 def getDockerTag(){
    def tag = sh script: 'git rev-parse HEAD', returnStdout: true
    return tag
+}
+
+def getInstanceIp(){
+   def ip = sh script: 'curl ifconfig.co', returnStdout: true
+   return ip;
 }
