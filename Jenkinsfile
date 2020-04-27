@@ -21,7 +21,7 @@ pipeline {
         stage('Deploy to k8s'){
            steps{
                     sh "chmod +x changeTag.sh"
-                    sh "./changeTag DOCKER_TAG"
+                    sh "./changeTag.sh ${DOCKER_TAG}"
                     sh "cp -R helm-chart1/ /home/ec2-user/app"
                     sh "cd /"
                     sh "cd home/ec2-user/app"
