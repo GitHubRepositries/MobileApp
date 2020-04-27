@@ -1,2 +1,2 @@
-#!/bin/#!/usr/bin/env bash
+#!/bin/bash
 sed "s/tagVersion/$1/g" values.yaml
