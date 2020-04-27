@@ -23,7 +23,7 @@ pipeline {
                     sh "chmod +x changeTag.sh"
                     sh "./changeTag.sh ${DOCKER_TAG}"
                     sh "cp -R helm-chart1/ /home/ec2-user/app"
-                    sh "cd /home/ec2-user/app | helm install first-release helm-chart1/"
+                    sh "su ec2-user | cd /home/ec2-user/app | helm install first-release helm-chart1/"
            }
         }
     }
