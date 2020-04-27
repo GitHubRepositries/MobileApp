@@ -22,6 +22,7 @@ pipeline {
            steps{
                     sh "chmod +x changeTag.sh"
                     sh "./changeTag.sh ${DOCKER_TAG}"
+                    sh "chmod 777 /home/ec2-user/app"
                     sh "cp -R helm-chart1/ /home/ec2-user/app"
                     sh "cd /"
                     sh "cd home/ec2-user/app"
