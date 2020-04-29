@@ -20,10 +20,14 @@ pipeline {
         }
         stage('Deploy to k8s'){
            steps{
-                    sh "chmod +x changeTag.sh"
-                    sh "./changeTag.sh ${DOCKER_TAG}"
-                    sh "cp -R helm-chart1/ /home/ec2-user/app"
-                    sh "su ec2-user | cd /home/ec2-user/app | helm install first-release helm-chart1/"
+                sh "chmod +x changeTag.sh"
+                sh "./changeTag.sh ${DOCKER_TAG}"
+                sshagent(['kops-machine']) {
+                 sh "scp -o StrictHostKeyChecking=no helm-chart1/ ec2-user@13.59.43.215:/home/ec2-user/app/"
+                 script{
+                    sh "ssh ec2-user@13.59.43.215 helm install first-release helm-chart1/"
+                 }
+              }
            }
         }
     }
