@@ -2,7 +2,7 @@
 FROM node:12.10.0 as build
 WORKDIR /app
 COPY package.json /app/package.json
-RUN npm install --silent
+RUN npm install
 COPY . /app
 RUN npm run build
 
