@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
         - name: my-react-app
-          image: mrunalini117/sample2:latest
+          image: raghavendrachervirala/prestageapp:latest
           imagePullPolicy: Always
           ports:
            - containerPort: 80
