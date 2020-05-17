@@ -5,7 +5,7 @@
 replicaCount: 2
 
 image:
-  repository: mrunalini117/react-app
+  repository: raghavendrachervirala/pentagon
   tag: tagVersion
   pullPolicy: IfNotPresent
 

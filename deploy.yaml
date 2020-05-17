@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
         - name: my-react-app
-          image: raghavendrachervirala/prestageapp:latest
+          image: raghavendrachervirala/pentagon:latest
           imagePullPolicy: Always
           ports:
            - containerPort: 80
@@ -30,6 +30,6 @@ spec:
     - port: 80
       targetPort: 80
       protocol: TCP
-      nodePort: 31000
+      nodePort: 32000
   selector:
     app: my-react-app

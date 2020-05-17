@@ -7,14 +7,14 @@ pipeline {
     stages{
         stage('Build Docker image'){
            steps{
-              sh "docker build . -t mrunalini117/react-app:${DOCKER_TAG}"
+              sh "docker build . -t raghavendrachervirala/pentagon:${DOCKER_TAG}"
            }
         }
         stage('Dockerhub push'){
           steps{
             withCredentials([string(credentialsId: 'Docker_hub_pwd', variable: 'dockerHubPwd')]) {
-                 sh "docker login -u mrunalini117 -p ${dockerHubPwd}"
-                 sh "docker push mrunalini117/react-app:${DOCKER_TAG}"
+                 sh "docker login -u raghavendrachervirala -p ${dockerHubPwd}"
+                 sh "docker push raghavendrachervirala/pentagon:${DOCKER_TAG}"
             }
           }
         }
