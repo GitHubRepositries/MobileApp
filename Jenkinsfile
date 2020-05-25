@@ -12,23 +12,11 @@ pipeline {
         }
         stage('Dockerhub push'){
           steps{
-            withCredentials([string(credentialsId: 'Docker_hub_pwd', variable: 'dockerHubPwd')]) {
+            withCredentials([string(credentialsId: 'docker-hub', variable: 'dockerHubPwd')]) {
                  sh "docker login -u raghavendrachervirala -p ${dockerHubPwd}"
                  sh "docker push raghavendrachervirala/pentagon:${DOCKER_TAG}"
             }
           }
-        }
-        stage('Deploy to k8s'){
-           steps{
-                sh "chmod +x changeTag.sh"
-                sh "./changeTag.sh ${DOCKER_TAG}"
-                sshagent(['kops-machine']) {
-                 sh "scp -o StrictHostKeyChecking=no helm-chart1/ ec2-user@13.59.43.215:/home/ec2-user/app/"
-                 script{
-                    sh "ssh ec2-user@13.59.43.215 helm install first-release helm-chart1/"
-                 }
-              }
-           }
         }
     }
 }

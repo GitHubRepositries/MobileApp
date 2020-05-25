@@ -20,7 +20,7 @@ serviceAccount:
   annotations: {}
   # The name of the service account to use.
   # If not set and create is true, a name is generated using the fullname template
-  name: react117
+  name: pentagon
 
 podSecurityContext: {}
   # fsGroup: 2000
@@ -35,8 +35,8 @@ securityContext: {}
 
 service:
   type: NodePort
-  port: 80
-  nodePort: 31000
+  port: 70
+  nodePort: 35000
 
 ingress:
   enabled: false
