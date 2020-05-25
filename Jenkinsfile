@@ -10,14 +10,6 @@ pipeline {
               sh "docker build . -t raghavendrachervirala/pentagon:${DOCKER_TAG}"
            }
         }
-        stage('Dockerhub push'){
-          steps{
-            withCredentials([string(credentialsId: 'docker-hub', variable: 'dockerHubPwd')]) {
-                 sh "docker login -u raghavendrachervirala -p ${dockerHubPwd}"
-                 sh "docker push raghavendrachervirala/pentagon:${DOCKER_TAG}"
-            }
-          }
-        }
     }
 }
 
