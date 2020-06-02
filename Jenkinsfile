@@ -7,7 +7,7 @@ pipeline {
     stages{
         stage('Build Docker image'){
            steps{
-              sh "sudo docker build . -t raghavendrachervirala/pentagon:${DOCKER_TAG}"
+              sh "docker build . -t raghavendrachervirala/pentagon:${DOCKER_TAG}"
            }
         }
     }
